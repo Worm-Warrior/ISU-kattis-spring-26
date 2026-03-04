@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 #include <string>
 
+// DFA graph problem, find graph that loops back to the start after running a DFA?
 
 int main() {
 	std::string numbers;
