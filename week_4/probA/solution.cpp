@@ -3,6 +3,16 @@
 
 using namespace std;
 
+int comp_two_names(string name1, string name2) {
+	return name1.compare(0, 2, name2, 0, 2);
+}
+
+void sort_names(vector<string> &names) {
+	stable_sort(names.begin(), names.end(), [](const string& a, const string &b) {
+		return comp_two_names(a, b) < 0;
+	});
+}
+
 int main() {
 	int n;
 	cin >> n;
@@ -11,29 +21,22 @@ int main() {
 	int g = 0;
 	while (n != 0) {
 		names.push_back({});
-		cout << n << endl;
 		for (int i = 0; i < n; i++) {
 			string temp;
 			getline(cin, temp);
 			names[g].push_back(temp);
 		}
 		cin >> n;
-		cout << n << endl;
 		cin.ignore();
 		g++;
 	}
 	vector<vector<string>> sorted(names.size());
 
-	cout << sorted.size() << " sorted size" << endl;
-
 	for (auto a : names) {
+		sort_names(a);
 		for (auto s : a) {
 			cout << s << endl;
-			cout << s.substr(0, 2) << endl;
 		}
-		cout << "-----" << endl;
+		cout << endl;
 	}
-
-	string poincare = "Poincare";
-	string ponchhammer = "Pochhammmer";
 }
